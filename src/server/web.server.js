@@ -1,33 +1,30 @@
-const express = require('express');
-
+const express = require('express')
 export default class WebServer {
   constructor () {
-    this.app = express ();
-    this.app.use(express.static('dist/public'));
+    this.app = express()
+    this.app.use(express.static('dist/public'))
   }
-
   start () {
-    return new Promise((reslove, reject) => {
+    return new Promise((resolve, reject) => {
       try {
         this.server = this.app.listen(3000, function () {
-          reslove ();
-        });
+          resolve()
+        })
       } catch (e) {
-        console.error(e);
-        reject(e);
+        console.error(e)
+        reject(e)
       }
     })
   }
-
   stop () {
-    return new Promise((resolve, reject) =>{
-      try{
+    return new Promise((resolve, reject) => {
+      try {
         this.server.close(() => {
-          resolve ();
+          resolve()
         })
       } catch (e) {
-        console.error(e.message);
-        reject ();
+        console.error(e.message)
+        reject(e)
       }
     })
   }
