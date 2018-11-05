@@ -1,4 +1,5 @@
-const path = require('path');
+let path = require('path');
+let nodeExternals = require('webpack-node-externals');
 
 const moduleObj = {
   loader: [
